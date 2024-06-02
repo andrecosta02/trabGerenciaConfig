@@ -19,7 +19,7 @@ module.exports = {
         const task = tasks.find(task => task.id === parseInt(req.params.id));
 
         if (!task) 
-        return res.status(404).send('A Task do ID fornecido não foi encontrada.');
+        return res.status(404).send('The task with the given ID was not found.');
 
         res.send(task);
     },
@@ -75,6 +75,15 @@ module.exports = {
         res.send(task);
     },
 
+    delete: async (req, res) => {
+        const task = tasks.find(task => task.id === parseInt(req.params.id));
+        if (!task) return res.status(404).send('The task with the given ID was not found .');
+
+        const index = tasks.indexOf(task);
+        tasks.splice(index, 1);
+
+        res.send(task);
+    },
 
 
 
