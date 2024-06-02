@@ -20,7 +20,6 @@ module.exports = {
 
         if (!task) 
         return res.status(404).send('A Atividade com o ID passado não foi encontrada.');
-
         res.send(task);
     },
 
@@ -75,6 +74,15 @@ module.exports = {
         res.send(task);
     },
 
+    delete: async (req, res) => {
+        const task = tasks.find(task => task.id === parseInt(req.params.id));
+        if (!task) return res.status(404).send('A tarefa com o ID fornecido não foi encontrada.');
+
+        const index = tasks.indexOf(task);
+        tasks.splice(index, 1);
+
+        res.send(task);
+    },
 
 
 
