@@ -6,7 +6,6 @@ const date = new Date()
 const fullDate = `${date.getFullYear()}${(date.getMonth() + 1).toString().padStart(2,'0')}${date.getDate().toString().padStart(2,'0')}`
 
 let tasks = [];
-// Test Conflito 
 
 module.exports = {
 
