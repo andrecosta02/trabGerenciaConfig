@@ -1,6 +1,6 @@
 // const clientService = require("../services/clientService")
-const { validationResult } = require('express-validator');
-const { body, param } = require('express-validator');
+// const { validationResult } = require('express-validator');
+// const { body, param } = require('express-validator');
 
 const date = new Date()
 const fullDate = `${date.getFullYear()}${(date.getMonth() + 1).toString().padStart(2,'0')}${date.getDate().toString().padStart(2,'0')}`
@@ -15,14 +15,7 @@ module.exports = {
 
 
 
-    listOne: async (req, res) => {
-        const task = tasks.find(task => task.id === parseInt(req.params.id));
 
-        if (!task) 
-        return res.status(404).send('A tarefa com o ID fornecido não foi encontrada.');
-
-        res.send(task);
-    },
 
 
 
@@ -34,7 +27,6 @@ module.exports = {
         let client = await clientService.filter(clientId, clientName)
 
         if(client) {
-
             json.result = client
         } else {
             json.message = "Não foram encontrados clientes com esse ID"
@@ -78,15 +70,7 @@ module.exports = {
 
 
 
-    delete: async (req, res) => {
-        const task = tasks.find(task => task.id === parseInt(req.params.id));
-        if (!task) return res.status(404).send('A tarefa com o ID fornecido não foi encontrada.');
 
-        const index = tasks.indexOf(task);
-        tasks.splice(index, 1);
-
-        res.send(task);
-    },
 
 
 }
