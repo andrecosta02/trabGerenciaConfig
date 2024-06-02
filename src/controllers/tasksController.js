@@ -15,7 +15,14 @@ module.exports = {
 
 
 
+    listOne: async (req, res) => {
+        const task = tasks.find(task => task.id === parseInt(req.params.id));
 
+        if (!task) 
+        return res.status(404).send('A Task do ID fornecido não foi encontrada.');
+
+        res.send(task);
+    },
 
 
 
